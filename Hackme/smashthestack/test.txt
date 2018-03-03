@@ -1,0 +1,4 @@
+0xffffc63c buf+4
+0xffffc508 string pointer
+0xffffc8f6 %s terminated
+
