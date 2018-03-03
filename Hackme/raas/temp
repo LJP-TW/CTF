@@ -1,0 +1,17 @@
+00000000 00000011 r0-fp1-- r0-fp2--
+p-r0-str 00000029 r0-str-- r0-str--
+r0-str-- r0-str-- r0-str-- r0-str--
+r0-str-- r0-str-- r0-str-- 00000011
+r1-fp1-- r1-fp2-- p-r1-str 00000029
+r1-str-- r1-str-- r1-str-- r1-str--
+r1-str-- r1-str-- r1-str-- r1-str--
+r1-str--
+
+00000000 00000011 r0-fp1-- r0-fp2--
+p-r0-str 00000029 scode--- scode---
+scode--- scode--- scode--- ccscode-
+cccccccc cccccccc cccccccc cccccccc
+87878787 system-- p-r1-str 00000029
+r1-str-- r1-str-- r1-str-- r1-str--
+r1-str-- r1-str-- r1-str-- r1-str--
+r1-str--
