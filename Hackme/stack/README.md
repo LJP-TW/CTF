@@ -6,6 +6,7 @@
   - Write "/bin/sh"
 
 ## Stack Frame:
+```
 0xffffc508: stack.n
 0xffffc64c: stack canary
 0xffffc65c: ecx 0xffffc680
@@ -13,3 +14,4 @@
 0xffffc664: edi
 0xffffc668: ebp
 0xffffc67c: ret <__libc_start_main + 247>
+```
