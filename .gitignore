@@ -1,3 +1,4 @@
 # Ignore GDB & Peda command history
 *.gdb_history
 *peda-session-*.txt
+*.swp
