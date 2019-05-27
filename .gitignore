@@ -2,3 +2,6 @@
 *.gdb_history
 *peda-session-*.txt
 *.swp
+
+# Ignore desktop.ini
+desktop.ini
