@@ -1,6 +1,6 @@
 # Hint
-- Symbol ` != Symbol '
-    What this symbol ` do at linux shell?
+- Symbol \` != Symbol '
+    What this symbol \` do at linux shell?
 
 -   Execute those command and figure it out
     -   ```shell
