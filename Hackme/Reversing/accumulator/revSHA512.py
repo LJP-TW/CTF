@@ -1,0 +1,28 @@
+secretarray = [ 0x000000c3, 0x000000ff, 0x000001ed, 0x00000248, 
+    0x0000031f, 0x000003a1, 0x000003b2, 0x0000043e, 
+    0x0000049c, 0x000004a0, 0x0000058d, 0x0000063b, 
+    0x0000070d, 0x00000736, 0x00000821, 0x00000910, 
+    0x0000097e, 0x00000a2d, 0x00000aa7, 0x00000b9c, 
+    0x00000c8d, 0x00000d4b, 0x00000d5a, 0x00000e41, 
+    0x00000e80, 0x00000f6e, 0x00000f95, 0x00001061, 
+    0x00001084, 0x0000112a, 0x000011ab, 0x00001210, 
+    0x00001262, 0x00001347, 0x00001387, 0x000013d0, 
+    0x000013f2, 0x000014ab, 0x00001586, 0x000015a0, 
+    0x0000160c, 0x00001677, 0x00001769, 0x000017e6, 
+    0x000017ee, 0x00001836, 0x00001843, 0x0000190a, 
+    0x00001945, 0x000019d1, 0x000019f7, 0x00001a60, 
+    0x00001b42, 0x00001b62, 0x00001b8d, 0x00001bc2, 
+    0x00001c6a, 0x00001d2c, 0x00001d8b, 0x00001df9, 
+    0x00001e1a, 0x00001f14, 0x00001fd2, 0x00001ffb ]
+
+sha512 = '\\x'
+
+sha512 += hex(secretarray[0])[2:]
+
+for i in range(1, 64):
+    sha512 += '\\x'
+    sha512 += hex(secretarray[i] - secretarray[i - 1])[2:]
+
+print(sha512)
+
+# set {char [65]} 0x7fffffffd9c0 = "\xc3\x3c\xee\x5b\xd7\x82\x11\x8c\x5e\x4\xed\xae\xd2\x29\xeb\xef\x6e\xaf\x7a\xf5\xf1\xbe\xf\xe7\x3f\xee\x27\xcc\x23\xa6\x81\x65\x52\xe5\x40\x49\x22\xb9\xdb\x1a\x6c\x6b\xf2\x7d\x8\x48\xd\xc7\x3b\x8c\x26\x69\xe2\x20\x2b\x35\xa8\xc2\x5f\x6e\x21\xfa\xbe\x29"
