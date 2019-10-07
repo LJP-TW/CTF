@@ -19,7 +19,7 @@ custom_task_auto.vim combines scripts
 
 You can run scripts one by one, simulating dynamic analysis
 
-## F
+## File
 
 decoder.py : first version of python script that equivalent to the logic of task.vim
 
