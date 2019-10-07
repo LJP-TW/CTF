@@ -16,8 +16,13 @@ Divide task.vim to smaller vim scripts, conquering every small scripts.
 Use human brain to turn task.vim to python script :(
 
 custom_task_auto.vim combines scripts
+
 You can run scripts one by one, simulating dynamic analysis
 
+## F
+
 decoder.py : first version of python script that equivalent to the logic of task.vim
+
 decoder3.py : make first version of python more easier to understand
+
 solve.py : written by [Frank Lin](https://github.com/eee4017) !
