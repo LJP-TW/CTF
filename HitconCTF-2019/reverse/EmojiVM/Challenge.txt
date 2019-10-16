@@ -1,0 +1,5 @@
+A simple VM that takes emojis as input! Try figure out the secret!
+
+emojivm-d967bd1b53b927820de27960f8eec7d7833150ca.zip
+
+Author: bruce30262
