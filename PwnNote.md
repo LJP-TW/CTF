@@ -1,13 +1,26 @@
----
-title: CTF Pwn Note
-description: Pwn
-tags: CTF
-lang: zh_tw
----
-
 CTF Pwn Note
 ===
-[TOC]
+- [流程](#流程)
+    - [架設題目](#架設題目)
+        - [ncat](#ncat)
+            - [安裝](#安裝)
+            - [使用](#使用)
+    - [分析工具](#分析工具)
+        - [gdb](#gdb)
+            - [套件](#套件)
+            - [使用方式](#使用方式)
+        - [seccomp-tools](#seccomp-tools)
+        - [IDA](#IDA)
+        - [Ghidra](#Ghidra)
+        - [radare2](#radare2)
+    - [寫 exploit](#寫-exploit1)
+        - [Python 套件](#Python-套件)
+        - [確定 libc 版本](#確定-libc-版本)
+        - [不同版本 libc](#不同版本-libc)
+        - [配上動態分析](#配上動態分析)
+- [攻擊手段](#攻擊手段1)
+    - [Buffer overflow](#Buffer-overflow)
+    - [ret2lib](#ret2lib)
 
 # 流程
 
@@ -138,12 +151,21 @@ readelf -s libc-2.23.so.i386 | grep -E '(main|gets)@@'
 
 # 攻擊手段
 
+## Buffer overflow
+各種 Buffer overflow
+- stack overflow
+    - [AIS3-2018 pwn-mail](https://github.com/LJP-TW/CTF/tree/master/AIS3-2018/pwn-mail)
+    - [AIS3-2019 welcomeBof](https://github.com/LJP-TW/CTF/tree/master/AIS3-2019/pwn/welcomeBof)
+- .data overflow
+- heap overflow
+- ...
+
 ## ret2lib
 用各種手段, 讓 Instruction Pointer 指到 libc 中你想利用的 function 上
 
 
 
-
+###### tags: `CTF`
 
 
 
