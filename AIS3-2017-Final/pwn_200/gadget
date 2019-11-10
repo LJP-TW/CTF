@@ -1,0 +1,51 @@
+Gadgets information
+============================================================
+0x00000000004000d6 : add al, ch ; cmp al, byte ptr [rax] ; add byte ptr [rax], al ; leave ; ret
+0x0000000000400096 : add byte ptr [rax + 0x3c], bh ; xor rdi, rdi ; syscall
+0x00000000004000d4 : add byte ptr [rax], al ; add al, ch ; cmp al, byte ptr [rax] ; add byte ptr [rax], al ; leave ; ret
+0x00000000004000a6 : add byte ptr [rax], al ; add byte ptr [rdi + 0x5e], bl ; pop rdx ; ret
+0x00000000004000d9 : add byte ptr [rax], al ; add cl, cl ; ret
+0x00000000004000da : add byte ptr [rax], al ; leave ; ret
+0x00000000004000a7 : add byte ptr [rax], al ; pop rdi ; pop rsi ; pop rdx ; ret
+0x000000000040009a : add byte ptr [rax], al ; xor rdi, rdi ; syscall
+0x00000000004000a8 : add byte ptr [rdi + 0x5e], bl ; pop rdx ; ret
+0x00000000004000db : add cl, cl ; ret
+0x0000000000400111 : add esp, 0x18 ; pop rax ; ret
+0x0000000000400110 : add rsp, 0x18 ; pop rax ; ret
+0x0000000000400098 : cmp al, 0 ; add byte ptr [rax], al ; xor rdi, rdi ; syscall
+0x00000000004000d8 : cmp al, byte ptr [rax] ; add byte ptr [rax], al ; leave ; ret
+0x000000000040011b : dec byte ptr [rax + 0x31] ; dec dword ptr [rax + 0x31] ; ror byte ptr [rdi], 5 ; ret
+0x000000000040011e : dec dword ptr [rax + 0x31] ; ror byte ptr [rdi], 5 ; ret
+0x00000000004000bd : inc eax ; syscall
+0x00000000004000ba : inc edi ; inc rax ; syscall
+0x00000000004000bc : inc rax ; syscall
+0x00000000004000b9 : inc rdi ; inc rax ; syscall
+0x00000000004000dc : leave ; ret
+0x0000000000400097 : mov eax, 0x3c ; xor rdi, rdi ; syscall
+0x000000000040011a : mov esi, edi ; xor rdi, rdi ; xor rax, rax ; syscall
+0x0000000000400119 : mov rsi, rdi ; xor rdi, rdi ; xor rax, rax ; syscall
+0x0000000000400114 : pop rax ; ret
+0x00000000004000a9 : pop rdi ; pop rsi ; pop rdx ; ret
+0x00000000004000ab : pop rdx ; ret
+0x00000000004000aa : pop rsi ; pop rdx ; ret
+0x00000000004000ac : ret
+0x00000000004000be : ror byte ptr [rdi], 5 ; ret
+0x00000000004000a5 : sbb dword ptr [rax], eax ; add byte ptr [rax], al ; pop rdi ; pop rsi ; pop rdx ; ret
+0x000000000040009f : syscall
+0x0000000000400120 : xor eax, eax ; syscall
+0x00000000004000b7 : xor edi, edi ; inc rdi ; inc rax ; syscall
+0x000000000040009d : xor edi, edi ; syscall
+0x000000000040011d : xor edi, edi ; xor rax, rax ; syscall
+0x000000000040011f : xor rax, rax ; syscall
+0x00000000004000b6 : xor rdi, rdi ; inc rdi ; inc rax ; syscall
+0x000000000040009c : xor rdi, rdi ; syscall
+0x000000000040011c : xor rdi, rdi ; xor rax, rax ; syscall
+
+Unique gadgets found: 40
+
+ROP chain generation
+===========================================================
+
+- Step 1 -- Write-what-where gadgets
+
+	[-] Can't find the 'mov qword ptr [r64], r64' gadget
