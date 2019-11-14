@@ -18,9 +18,14 @@ CTF Pwn Note
         - [確定 libc 版本](#確定-libc-版本)
         - [不同版本 libc](#不同版本-libc)
         - [配上動態分析](#配上動態分析)
-- [攻擊手段](#攻擊手段1)
+- [攻擊手段](#攻擊手段)
     - [Buffer overflow](#Buffer-overflow)
+    - [Shellcode](#Shellcode)
+    - [Format String Attack](#Format-String-Attack)
+    - [ROP](#ROP)
+    - [GOT hijack](#GOT-hijack)
     - [ret2lib](#ret2lib)
+    - [Others](#Others)
 
 # 流程
 
@@ -154,15 +159,54 @@ readelf -s libc-2.23.so.i386 | grep -E '(main|gets)@@'
 ## Buffer overflow
 各種 Buffer overflow
 - stack overflow
+    - 經典場景即是利用 stack overflow 蓋掉 return address
     - [AIS3-2018 pwn-mail](https://github.com/LJP-TW/CTF/tree/master/AIS3-2018/pwn-mail)
     - [AIS3-2019 welcomeBof](https://github.com/LJP-TW/CTF/tree/master/AIS3-2019/pwn/welcomeBof)
+    - [Hackme toooomuch](https://github.com/LJP-TW/CTF/tree/master/Hackme/Pwn/toooomuch)
+    - [CSAW-2019 baby_boi](https://github.com/LJP-TW/CTF/tree/master/CSAW-2019/Pwn/baby_boi)
 - .data overflow
 - heap overflow
 - ...
 
+## Shellcode
+經典場景為成功在 rwx 的記憶體區段寫入一段 shellcode, 並跳轉過去執行
+- [AIS3-2019 orw](https://github.com/LJP-TW/CTF/tree/master/AIS3-2019/pwn/orw)
+- [Hackme toooomuch2](https://github.com/LJP-TW/CTF/tree/master/Hackme/Pwn/toooomuch2)
+- [Hackme onepunch](https://github.com/LJP-TW/CTF/tree/master/Hackme/Pwn/onepunch)
+- [CSAW-2018 shell-code](https://github.com/LJP-TW/CTF/tree/master/CSAW-2018/shell-code)
+- [AIS3-2019 shellcode-2019](https://github.com/LJP-TW/CTF/tree/master/AIS3-2019/pwn/shellcode2019)
+- [AIS3-2017-Final pwn_100](https://github.com/LJP-TW/CTF/blob/master/AIS3-2017-Final/pwn_100)
+
+## Format String Attack
+跟 printf 行為有關, 詳細底層自行 google, 簡單來說, 若 printf 第一個參數可控, 則高機率有此漏洞
+
+- [Hackme echo](https://github.com/LJP-TW/CTF/tree/master/Hackme/Pwn/echo)
+- [Hackme echo2](https://github.com/LJP-TW/CTF/tree/master/Hackme/Pwn/echo2)
+- [CSAW-2019 GOT_Milk](https://github.com/LJP-TW/CTF/tree/master/CSAW-2019/Pwn/GOT%20Milk)
+- [AIS3-2019 hello](https://github.com/LJP-TW/CTF/tree/master/AIS3-2019/pwn/hello)
+
+## ROP
+可以參考 [ROP輕鬆談](https://www.slideshare.net/hackstuff/rop-40525248)
+- [Hackme rop](https://github.com/LJP-TW/CTF/tree/master/Hackme/Pwn/rop)
+- [Hackme rop2](https://github.com/LJP-TW/CTF/tree/master/Hackme/Pwn/rop2)
+- [Hackme rsbo](https://github.com/LJP-TW/CTF/tree/master/Hackme/Pwn/rsbo)
+- [Hackme rsbo2](https://github.com/LJP-TW/CTF/tree/master/Hackme/Pwn/rsbo2)
+- [AIS3-2019 secureBof](https://github.com/LJP-TW/CTF/tree/master/AIS3-2019/pwn/secureBof)
+- [AIS3-2017-Final pwn_200](https://github.com/LJP-TW/CTF/tree/master/AIS3-2017-Final/pwn_200)
+
+## GOT hijack
+跟 linux lazy-binding 的機制有關, 改寫 GOT 表讓下次 function call 到指定位置
+- [Hackme leave_msg](https://github.com/LJP-TW/CTF/tree/master/Hackme/Pwn/leave_msg)
+
 ## ret2lib
 用各種手段, 讓 Instruction Pointer 指到 libc 中你想利用的 function 上
+- [Hackme stack](https://github.com/LJP-TW/CTF/tree/master/Hackme/Pwn/stack)
 
+## Others
+- 利用 Smash Stack 錯誤訊息來造成一次性任意讀
+    - [Hackme smashthestack](https://github.com/LJP-TW/CTF/tree/master/Hackme/Pwn/smashthestack)
+- x64 syscall 322: stub_execveat
+    - [AIS3-2019 ppap](https://github.com/LJP-TW/CTF/tree/master/AIS3-2019/pwn/ppap)
 
 
 ###### tags: `CTF`
