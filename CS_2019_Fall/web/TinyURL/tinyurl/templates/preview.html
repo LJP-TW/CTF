@@ -1,0 +1,27 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <title>Preview</title>
+</head>
+
+<body>
+    <section class="section">
+    <div class="container is-primary">
+        <h1 class="title is-1 is-spaced bd-anchor-title">WARNING</h1>
+        <p>即將前往: {{ url }}<br /></p>
+        <p>預覽標題: <strong>{{ title }}</strong></p>
+
+        <br />
+
+        <h3 class="title is-3 is-spaced bd-anchor-title">確定要前往嗎？</h3>
+        <form action="{{ url_for('ignore_warning', url_id=url_id) }}">
+            <input type="checkbox" name="ignore" value="yes" />暫時不要再顯示這個網址的警告
+            <br /><br />
+            <input class="button is-success" type="submit" value="是" />
+        </form>
+    </div>
+    </section>
+</body>
