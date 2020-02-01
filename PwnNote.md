@@ -367,7 +367,7 @@ libc 2.26 後增進效能的機制，因為 Tcache 上沒有安全檢查，反�
 
 ### FILE structure
 - [AIS3-2020-EOF-Qual nonono](https://github.com/LJP-TW/CTF/tree/master/AIS3-2020-EOF-Qual/pwn/nonono)
-    - 待補 write-up
+    > 偽造 FILE 結構 (stdin) 做任意寫，把 one_gadget 寫進 free hook
 
 ###### tags: `CTF`
 
