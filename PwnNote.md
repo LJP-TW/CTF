@@ -34,9 +34,11 @@ CTF Pwn Note
     - [Heap](#heap)
         - [\_\_malloc_hook & \_\_free_hook hijack](#__malloc_hook--__free_hook-hijack)
         - [Use After Free](#Use-After-Free)
+        - [Unsorted bin attack](#Unsorted-bin-attack)
         - [Double Free](#Double-free)
         - [Tcache](#Tcache)
     - [Others](#Others)
+        - [FILE structure](#FILE-structure)
 
 # 流程
 
@@ -251,10 +253,16 @@ x64 syscall 可以查[這篇](https://blog.rchapman.org/posts/Linux_System_Call_
 - [Hackme rsbo](https://github.com/LJP-TW/CTF/tree/master/Hackme/Pwn/rsbo)
 - [Hackme rsbo2](https://github.com/LJP-TW/CTF/tree/master/Hackme/Pwn/rsbo2)
 - [AIS3-2017-Final pwn_200](https://github.com/LJP-TW/CTF/tree/master/AIS3-2017-Final/pwn_200)
-- [CS_2019_Fall rop](https://hackmd.io/_Pu0GT_vRaywozC9KPgHzg?view#rop)
-
-以下這題有趣的是 server 亂數的種子是 time(None)，可以跟 server 做一樣的事情就能 bypass 亂數機制
 - [AIS3-2019 secureBof](https://github.com/LJP-TW/CTF/tree/master/AIS3-2019/pwn/secureBof)
+    - 這題有趣的是 server 亂數的種子是 time(None)，可以跟 server 做一樣的事情就能 bypass 亂數機制
+- [CS_2019_Fall rop](https://hackmd.io/_Pu0GT_vRaywozC9KPgHzg?view#rop)
+- [AIS3-2020-EOF-Qual Impossible](https://github.com/LJP-TW/CTF/tree/master/AIS3-2020-EOF-Qual/pwn/Impossible)
+    - undefined behavior of abs 導致 buffer overflow
+- [AIS3-2020-EOF-Qual EasyROP](https://github.com/LJP-TW/CTF/tree/master/AIS3-2020-EOF-Qual/pwn/EasyROP)
+    - x86 ROP
+    - 使用 libc 中的 `call   DWORD PTR gs:0x10` gadget, 進而呼叫了 `__kernel_vsyscall`, 作為 `int 0x80` 的替代方案
+    - 在 x64 編譯 x86 程式時, function prologue 長得不太一樣, 造成 ROP 的困難
+    - EasyROP 超不 Easy @@
 
 ### ret2plt
 用各種手段(e.g. GOT hijack), 讓 Instruction Pointer 指到 plt，進而 call 到該 plt 的 function
@@ -326,12 +334,24 @@ one gadget 可以透過以下工具去查
 已經 Free 掉了, 卻還拿來做使用
 - [CS_2019_Fall UAF](https://hackmd.io/_Pu0GT_vRaywozC9KPgHzg?view#UAF)
 
+### Unsorted bin attack
+其實明確定義我不是很了, 應該是任何跟 unsorted bin 相關的攻擊吧(?
+
+- 用 **unsorted bin attack** 讓 `__free_hook` 前面一點點的地址跑出 `0x7fxxxxxx`, 搭配 **fastbin attack** 能改寫到 `__free_hook`
+    - [CS_2019_Fall Note++](https://hackmd.io/_Pu0GT_vRaywozC9KPgHzg#Note1)
+        - 有簡單的 Heap overflow 可利用
+    - [BamboofoxCTF-2019 note](https://github.com/LJP-TW/CTF/tree/master/BamboofoxCTF2019/pwn/note)
+        - 錯誤使用 snprintf 導致有 Heap overflow 可利用, cool
+
 ### Double free
 同一塊 chunk free 兩次, 又成功 malloc 再次拿取到這塊 chunk 時
 
 這塊 chunk 就處於 used 與 free 的疊加態當中
 
 如此就有機會爆改 metadata, 改掉 fd bk 鏈, 諸如此類的利用
+
+- [AIS3-2020-EOF-Qual re-alloc](https://github.com/LJP-TW/CTF/tree/master/AIS3-2020-EOF-Qual/pwn/re-alloc)
+    - 玩爆 realloc 的一題, 歸類在這區好像也還是怪怪的 XD
 
 ### Tcache
 libc 2.26 後增進效能的機制，因為 Tcache 上沒有安全檢查，反而更好打了
@@ -345,6 +365,9 @@ libc 2.26 後增進效能的機制，因為 Tcache 上沒有安全檢查，反�
 - x64 syscall 322: stub_execveat
     - [AIS3-2019 ppap](https://github.com/LJP-TW/CTF/tree/master/AIS3-2019/pwn/ppap)
 
+### FILE structure
+- [AIS3-2020-EOF-Qual nonono](https://github.com/LJP-TW/CTF/tree/master/AIS3-2020-EOF-Qual/pwn/nonono)
+    - 待補 write-up
 
 ###### tags: `CTF`
 
