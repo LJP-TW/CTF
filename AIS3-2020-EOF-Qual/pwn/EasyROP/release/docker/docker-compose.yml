@@ -1,0 +1,22 @@
+easyrop:
+    build: ./
+    environment:
+        - OLDPWD=/home
+        - XDG_RUNTIME_DIR=/run/user/1000
+        - LESSOPEN=| /usr/bin/lesspipe %s
+        - LANG=en_US
+        - SHLVL=1
+        - SHELL=/bin/bash
+        - FLAG=/
+        - ROOT=/
+        - TCP_PORT=4444
+        - PORT=4444
+        - X_PORT=4444
+        - SERVICE=EasyROP
+        - XPC_FLAGS=0x0
+        - TMPDIR=/tmp
+        - RBENV_SHELL=bash
+    ports:
+        - "4444:4444"
+    expose:
+        - "4444"
