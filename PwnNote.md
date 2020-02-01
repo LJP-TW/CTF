@@ -39,7 +39,7 @@ CTF Pwn Note
         - [Tcache](#Tcache)
     - [Others](#Others)
         - [FILE structure](#FILE-structure)
-        - [Parent & Child](#Parent-amp-Child)
+        - [Parent & Child](#parent--child)
 
 # 流程
 
