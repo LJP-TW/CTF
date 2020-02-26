@@ -283,7 +283,15 @@ x64 syscall 可以查[這篇](https://blog.rchapman.org/posts/Linux_System_Call_
 - [TUCTF-2019 leakalicious](https://github.com/LJP-TW/CTF/tree/master/TUCTF-2019/pwn/leakalicious)
 
 ### ret2dl_resolve
-TBD.
+[這篇其他人的筆記](http://pwn4.fun/2016/11/09/Return-to-dl-resolve/)寫得很詳細
+
+我將其更進一步簡化成[這篇筆記](https://hackmd.io/@LJP/BkJmAqXEI)
+
+利用 `_dl_runtime_resolve` 這個用來支援 Lazy binding 機制的函數，可以在沒有 leak libc 的情況之下直接 call system
+
+- [XDCTF-2015 pwn 200](https://github.com/LJP-TW/CTF/tree/master/XDCTF-2015/pwn/200)
+    - 參考這題的 exploit 能對這個攻擊有更好的理解
+
 
 ### ret2csu
 可以參考[這篇](https://xz.aliyun.com/t/4068)
