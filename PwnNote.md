@@ -36,6 +36,7 @@ CTF Pwn Note
         - [Use After Free](#Use-After-Free)
         - [Unsorted bin attack](#Unsorted-bin-attack)
         - [Double Free](#Double-free)
+        - [Unlink](#Unlink)
         - [Tcache](#Tcache)
     - [Others](#Others)
         - [FILE structure](#FILE-structure)
@@ -236,6 +237,11 @@ x64 syscall 可以查[這篇](https://blog.rchapman.org/posts/Linux_System_Call_
 利用 Format string vulns leak 出 canary 之後就能打簡單的 BOF
 - [CS_2017_Fall 0_ret222](https://github.com/LJP-TW/CTF/tree/master/CS_2017_Fall/0_ret222)
 
+二段 Format string vulns
+- [AIS3-2020-EOF-Final whitehole](https://github.com/LJP-TW/CTF/tree/master/AIS3-2020-EOF-Final/pwn/whitehole)
+- [AIS3-2020-EOF-Final blackhole](https://github.com/LJP-TW/CTF/tree/master/AIS3-2020-EOF-Final/pwn/blackhole)
+    - 盲打, 成功機率為 1/256
+
 ### GOT hijack
 跟 linux lazy-binding 的機制有關, 改寫 GOT 表讓下次 function call 到指定位置
 - [Hackme leave_msg](https://github.com/LJP-TW/CTF/tree/master/Hackme/Pwn/leave_msg)
@@ -334,6 +340,7 @@ one gadget 可以透過以下工具去查
 ### Use After Free
 已經 Free 掉了, 卻還拿來做使用
 - [CS_2019_Fall UAF](https://hackmd.io/_Pu0GT_vRaywozC9KPgHzg?view#UAF)
+- [AIS3-2020-EOF-Final TT](https://github.com/LJP-TW/CTF/tree/master/AIS3-2020-EOF-Final/misc/TT)
 
 ### Unsorted bin attack
 其實明確定義我不是很了, 應該是任何跟 unsorted bin 相關的攻擊吧(?
@@ -353,6 +360,10 @@ one gadget 可以透過以下工具去查
 
 - [AIS3-2020-EOF-Qual re-alloc](https://github.com/LJP-TW/CTF/tree/master/AIS3-2020-EOF-Qual/pwn/re-alloc)
     - 玩爆 realloc 的一題, 歸類在這區好像也還是怪怪的 XD
+
+### Unlink
+利用 unlink 機制寫入任意位址
+- [Nullcon-2020 Dark_Honya](https://github.com/LJP-TW/CTF/tree/master/Nullcon-2020/pwn/Dark%20Honya)
 
 ### Tcache
 libc 2.26 後增進效能的機制，因為 Tcache 上沒有安全檢查，反而更好打了
