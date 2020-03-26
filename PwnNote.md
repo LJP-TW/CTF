@@ -24,7 +24,7 @@ CTF Pwn Note
     	- [Shellcode](#Shellcode)
     	- [Format String Vulnerability](#Format-String-Vulnerability)
     	- [GOT hijack](#GOT-hijack)
-    	- [ROP](#ROP)
+    	- [ROP](#ROP0)
     	- [ret2plt](#ret2plt)
     	- [ret2libc](#ret2libc)
     	- [ret2dl_resolve](#ret2dl_resolve)
@@ -34,10 +34,13 @@ CTF Pwn Note
     - [Heap](#heap)
         - [\_\_malloc_hook & \_\_free_hook hijack](#__malloc_hook--__free_hook-hijack)
         - [Use After Free](#Use-After-Free)
+        - [Fastbin attack](#Fastbin-attack)
         - [Unsorted bin attack](#Unsorted-bin-attack)
         - [Double Free](#Double-free)
         - [Unlink](#Unlink)
         - [Tcache](#Tcache)
+    - [Windows Pwn](#Windows-Pwn)
+        - [ROP](#ROP)
     - [Others](#Others)
         - [FILE structure](#FILE-structure)
         - [Parent & Child](#parent--child)
@@ -350,6 +353,10 @@ one gadget 可以透過以下工具去查
 - [CS_2019_Fall UAF](https://hackmd.io/_Pu0GT_vRaywozC9KPgHzg?view#UAF)
 - [AIS3-2020-EOF-Final TT](https://github.com/LJP-TW/CTF/tree/master/AIS3-2020-EOF-Final/misc/TT)
 
+### Fastbin attack
+- [9447-ctf-2015 search-engine](https://github.com/LJP-TW/CTF/tree/master/9447-ctf-2015/pwn/search-engine)
+    - 參考 [shellphish/how2heap](https://github.com/shellphish/how2heap) 而去練習的題目, 將 fake chunk 建到 stack 上, 達到類似 stack overflow 的效果, 後續建 ROP chain 達到 RCE
+
 ### Unsorted bin attack
 其實明確定義我不是很了, 應該是任何跟 unsorted bin 相關的攻擊吧(?
 
@@ -378,6 +385,16 @@ libc 2.26 後增進效能的機制，因為 Tcache 上沒有安全檢查，反�
 - [Pwnable.tw Tcache_Tear](https://pwnable.tw/challenge/#33)
 - [CS_2019_Fall T-Note](https://hackmd.io/_Pu0GT_vRaywozC9KPgHzg?view#T-Note)
     - Tcache 的 double free 超好打的啦
+
+## Windows Pwn
+玩法大同小異, 但 Windows 多了 SEH 機制
+
+### ROP
+- [AIS3-2020-EOF-Qual BlueNote](https://github.com/LJP-TW/CTF/tree/master/AIS3-2020-EOF-Qual/pwn/BlueNote)
+    - 基礎 ROP 題, 打 Linux pwn 通常會要 leak `libc`, 而 Windows pwn 則是 leak `kernel32.dll` `ntdll.dll`
+    - 用 IDA pro 開這些 dll, 從 `Export` 中找到想要的 function offset
+    - Windows calling convention 是 `rcx` `rdx` `r8` `r9` `stack` ...
+    - 用 Windbg 動態執行, 入門可以從[這篇](https://github.com/LJP-TW/Windows-Pwn-Step-by-Step)開始
 
 ## Others
 - 利用 Smash Stack 錯誤訊息來造成一次性任意讀
