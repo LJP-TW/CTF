@@ -38,6 +38,7 @@ CTF Pwn Note
         - [Unsorted bin attack](#Unsorted-bin-attack)
         - [Double Free](#Double-free)
         - [Unlink](#Unlink)
+        - [malloc consolidate](#malloc-consolidate)
         - [Tcache](#Tcache)
     - [Windows Pwn](#Windows-Pwn)
         - [ROP](#rop-1)
@@ -356,6 +357,10 @@ one gadget 可以透過以下工具去查
 ### Fastbin attack
 - [9447-ctf-2015 search-engine](https://github.com/LJP-TW/CTF/tree/master/9447-ctf-2015/pwn/search-engine)
     - 參考 [shellphish/how2heap](https://github.com/shellphish/how2heap) 而去練習的題目, 將 fake chunk 建到 stack 上, 達到類似 stack overflow 的效果, 後續建 ROP chain 達到 RCE
+- [0ctf-quals-2017 BabyHeap2017](https://github.com/LJP-TW/CTF/tree/master/0ctf-quals-2017/pwn/BabyHeap2017)
+    - 有簡單的 heap overflow
+    - 將其中一個 chunk 的 size 改掉後 free 他, 做出 unsorted bin, 再申請一塊適當大小的 chunk 讓下一次申請的 chunk 被兩個 pointer 指著
+    - 改 `__malloc_hook` 為 one gadget 拿 shell
 
 ### Unsorted bin attack
 其實明確定義我不是很了, 應該是任何跟 unsorted bin 相關的攻擊吧(?
@@ -379,6 +384,18 @@ one gadget 可以透過以下工具去查
 ### Unlink
 利用 unlink 機制寫入任意位址
 - [Nullcon-2020 Dark_Honya](https://github.com/LJP-TW/CTF/tree/master/Nullcon-2020/pwn/Dark%20Honya)
+- [HitconCTF-2014 stkof](https://github.com/LJP-TW/CTF/tree/master/HitconCTF-2014/pwn/stkof)
+
+### malloc consolidate
+- [HitconCTF-2016 SleepyHolder](https://github.com/LJP-TW/CTF/tree/master/HitconCTF-2016/SleepyHolder)
+    - 申請超大塊 chunk, 觸發 `malloc_consolidate()`
+    - 利用 `malloc_consolidate()` 會將已經 free 掉的 fastbin A chunk 整合後放回 smallbin, 讓緊鄰著的下一塊 B chunk (為 small chunk) 的 `PREV_INUSE` bit 為 0
+    - 再次 free A chunk, 此時由於它已被轉移到 smallbin, 不會導致 double free 被檢測到
+    - 此時 A chunk 同時處於 fastbin 和 smallbin 
+    - 再次申請 A chunk, 做好 unlink 的準備
+    - Free B chunk, 此時 B chunk 以為緊鄰著的上一塊 chunk 是 free 的, 會跟上一塊 chunk 合併
+    - unlink 導致任意寫
+    - 後面就是自由發揮了
 
 ### Tcache
 libc 2.26 後增進效能的機制，因為 Tcache 上沒有安全檢查，反而更好打了
