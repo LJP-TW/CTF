@@ -398,6 +398,13 @@ one gadget 可以透過以下工具去查
     - unlink 導致任意寫
     - 後面就是自由發揮了
 
+### House of spirit
+free 一個剛好符合 chunk 結構的位置, 下次再度申請記憶體時就能真的寫到這塊 fake chunk 了
+
+- [hackluCTF-2014 oreo](https://github.com/LJP-TW/CTF/tree/master/hackluCTF-2014/pwn/oreo)
+    - bss段上的全域變數經過刻意的調整後, 變成一塊可以被 free 的 fake chunk
+    - free 後再度申請, 就能隨意寫全域變數
+
 ### Tcache
 libc 2.26 後增進效能的機制，因為 Tcache 上沒有安全檢查，反而更好打了
 - [Pwnable.tw Tcache_Tear](https://pwnable.tw/challenge/#33)
