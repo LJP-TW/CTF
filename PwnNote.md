@@ -39,6 +39,7 @@ CTF Pwn Note
         - [Double Free](#Double-free)
         - [Unlink](#Unlink)
         - [malloc consolidate](#malloc-consolidate)
+        - [House of Spirit](#House-of-Spirit)
         - [Tcache](#Tcache)
     - [Windows Pwn](#Windows-Pwn)
         - [ROP](#rop-1)
@@ -398,7 +399,7 @@ one gadget 可以透過以下工具去查
     - unlink 導致任意寫
     - 後面就是自由發揮了
 
-### House of spirit
+### House of Spirit
 free 一個剛好符合 chunk 結構的位置, 下次再度申請記憶體時就能真的寫到這塊 fake chunk 了
 
 - [hackluCTF-2014 oreo](https://github.com/LJP-TW/CTF/tree/master/hackluCTF-2014/pwn/oreo)
