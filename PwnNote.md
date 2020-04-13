@@ -349,6 +349,8 @@ one gadget 可以透過以下工具去查
 
 - [CS_2019_Fall Note](https://hackmd.io/_Pu0GT_vRaywozC9KPgHzg?view#Note)
     - 搭配 double free, 成功在 `__malloc_hook - 0x13` 生出 fake chunk, 進而 rewrite `__malloc_hook` 為 `system`
+- [ByteBanditsCTF-2020 write](https://github.com/LJP-TW/CTF/tree/master/ByteBanditsCTF-2020/pwn/write)
+    - 寫 stack 使 one-gadget 的條件能夠滿足
 
 ### Use After Free
 已經 Free 掉了, 卻還拿來做使用
@@ -427,6 +429,10 @@ libc 2.26 後增進效能的機制，因為 Tcache 上沒有安全檢查，反�
     - [Hackme smashthestack](https://github.com/LJP-TW/CTF/tree/master/Hackme/Pwn/smashthestack)
 - x64 syscall 322: stub_execveat
     - [AIS3-2019 ppap](https://github.com/LJP-TW/CTF/tree/master/AIS3-2019/pwn/ppap)
+- [ByteBanditsCTF-2020 look-beyond](https://github.com/HexRabbit/CTF-writeup/tree/master/2020/ByteBandits-CTF/look-beyond)
+    - malloc 申請很大塊的空間時, 分配到的記憶體會緊貼在 libc 或 ld 之前
+    - 而 fs 指向的位址在 ld 後面的記憶體
+    - 通過直接改 fs:0x28, 讓程式以為 stack overflow, 進而呼叫 `__stack_chk_fail`
 
 ### FILE structure
 - [AIS3-2020-EOF-Qual nonono](https://github.com/LJP-TW/CTF/tree/master/AIS3-2020-EOF-Qual/pwn/nonono)
