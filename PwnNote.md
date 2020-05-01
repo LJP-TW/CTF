@@ -38,6 +38,7 @@ CTF Pwn Note
         - [Unsorted bin attack](#Unsorted-bin-attack)
         - [Double Free](#Double-free)
         - [Unlink](#Unlink)
+        - [Off-By-One](#off-by-one)
         - [malloc consolidate](#malloc-consolidate)
         - [House of Spirit](#House-of-Spirit)
         - [Tcache](#Tcache)
@@ -46,6 +47,7 @@ CTF Pwn Note
     - [Others](#Others)
         - [FILE structure](#FILE-structure)
         - [Parent & Child](#parent--child)
+        - [Misc](#misc)
 
 # 流程
 
