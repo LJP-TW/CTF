@@ -201,6 +201,10 @@ readelf -s libc-2.23.so.i386 | grep -E '(main|gets)@@'
         - 這題拆分成前後台, 想模擬現實世界的遊戲server, 蠻好玩的
     - [TUCTF-2019 thefirst](https://github.com/LJP-TW/CTF/tree/master/TUCTF-2019/pwn/thefirst)
         - Pwn 入門題
+    - [angstromCTF-2020 Deja_vu](https://github.com/LJP-TW/CTF/tree/master/angstromCTF-2020/pwn/Deja%20Vu)
+        - File 的 race condition 造成簡單的 BoF
+        - 用到 ctypes module 中的 CDLL，來製造出跟 process 一樣的 random number
+    - [angstromCTF-2020 No_Canary](https://github.com/LJP-TW/CTF/tree/master/angstromCTF-2020/pwn/No%20Canary)
 - .data overflow
 - heap overflow
 - ...
@@ -238,9 +242,11 @@ x64 syscall 可以查[這篇](https://blog.rchapman.org/posts/Linux_System_Call_
 - [Hackme echo2](https://github.com/LJP-TW/CTF/tree/master/Hackme/Pwn/echo2)
 - [CSAW-2019 GOT_Milk](https://github.com/LJP-TW/CTF/tree/master/CSAW-2019/Pwn/GOT%20Milk)
 - [AIS3-2019 hello](https://github.com/LJP-TW/CTF/tree/master/AIS3-2019/pwn/hello)
+- [angstromCTF-2020 LIBrary_in_C](https://github.com/LJP-TW/CTF/tree/master/angstromCTF-2020/pwn/LIBrary%20in%20C)
 
 利用 Format string vulns leak 出 canary 之後就能打簡單的 BOF
 - [CS_2017_Fall 0_ret222](https://github.com/LJP-TW/CTF/tree/master/CS_2017_Fall/0_ret222)
+- [angstromCTF-2020 Canary](https://github.com/LJP-TW/CTF/tree/master/angstromCTF-2020/pwn/Canary)
 
 二段 Format string vulns
 - [AIS3-2020-EOF-Final whitehole](https://github.com/LJP-TW/CTF/tree/master/AIS3-2020-EOF-Final/pwn/whitehole)
@@ -385,10 +391,16 @@ one gadget 可以透過以下工具去查
     - 玩爆 realloc 的一題, 歸類在這區好像也還是怪怪的 XD
 
 ### Unlink
-利用 unlink 機制寫入任意位址
+利用 unlink 機制寫入符合條件的位址 (通常是 scope 為全域變數的 pointer)
 - [Nullcon-2020 Dark_Honya](https://github.com/LJP-TW/CTF/tree/master/Nullcon-2020/pwn/Dark%20Honya)
 - [HitconCTF-2014 stkof](https://github.com/LJP-TW/CTF/tree/master/HitconCTF-2014/pwn/stkof)
 - [Insomni'hack-2017 Wheel_of_Robots](https://github.com/LJP-TW/CTF/tree/master/Insomni'hack-2017/pwn/Wheel%20of%20Robots)
+
+### Off-By-One
+在 heap 上只 overflow 了 1 byte，通常就是蓋 Null 截斷字串，清除了下個 chunk 的 size 中的 prev_in_use bit
+
+有機會製造出 chunk overlapping 和 UAF
+- [PlaidCTF-2015 datastore](https://github.com/LJP-TW/CTF/tree/master/PlaidCTF-2015/pwn/datastore)
 
 ### malloc consolidate
 - [HitconCTF-2016 SleepyHolder](https://github.com/LJP-TW/CTF/tree/master/HitconCTF-2016/SleepyHolder)
@@ -443,6 +455,23 @@ libc 2.26 後增進效能的機制，因為 Tcache 上沒有安全檢查，反�
     > 寫一份 shellcode 可以在判別 parent/child 後執行不同的指令
     > 
     - rdrand 
+
+### Misc
+- [angstromCTF-2020 Bop_It](https://github.com/LJP-TW/CTF/tree/master/angstromCTF-2020/pwn/Bop%20It)
+    - read 回傳值為拿了幾個字，並不被 Null 截斷
+    - strlen 回傳值以碰到 Null 來判斷
+    - 兩者行為的不同造成的 info leak
+- [angstromCTF-2020 bookface](https://github.com/LJP-TW/CTF/tree/master/angstromCTF-2020/pwn/bookface)
+    - Server 有下一個指令
+        - `sysctl vm.mmap_min_addr=0`
+        - 意味著能分配出在 0x0 的記憶體
+    - 參考 [libc-2.23 rand](https://hackmd.io/6c9p2hkWRBu_ZM6qbEXlzg?view)
+        - unsafe_state 的 rand_type 不等於 0 且 rptr 與 fptr 若指向 0，則 rand() 回傳 0
+    - 通過改掉 randtbl 中的值，達到上述條件，rand() 回傳 0 後，mmap 創出在 0 的記憶體
+    - 在 0 記憶體位址偽造 File structure
+    - 在 `fopen(file, "rb")` 之前把 file 砍掉，fopen 就會失敗而回傳 NULL
+    - 原本應該用來辨別錯誤的 NULL 變成真的指向一個有效的 File structure
+    - 偽造 vtable，將 `_IO_xsgetn_t` 指向 one gadget，fread 就會 call 到 one gadget
 
 ###### tags: `CTF`
 
