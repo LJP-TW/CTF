@@ -1,0 +1,12 @@
+# DESCRIPTION: Verilator output: Timestamp data for --skip-identical.  Delete at will.
+C "-Wall --cc check.sv --build main.cpp --exe"
+S   7854504  2920792  1598076272   791398627  1590418976           0 "/usr/bin/verilator_bin"
+S      1133      112  1598082066           0  1598082066           0 "check.sv"
+T     13490       44  1598082078           0  1598082078           0 "obj_dir/Vcheck.cpp"
+T      3242       43  1598082078           0  1598082078           0 "obj_dir/Vcheck.h"
+T      1784       46  1598082078           0  1598082078           0 "obj_dir/Vcheck.mk"
+T       539       41  1598082078           0  1598082078           0 "obj_dir/Vcheck__Syms.cpp"
+T       781       42  1598082078           0  1598082078           0 "obj_dir/Vcheck__Syms.h"
+T       209       47  1598082078           0  1598082078           0 "obj_dir/Vcheck__ver.d"
+T         0        0  1598082078           0  1598082078           0 "obj_dir/Vcheck__verFiles.dat"
+T      1530       45  1598082078           0  1598082078           0 "obj_dir/Vcheck_classes.mk"

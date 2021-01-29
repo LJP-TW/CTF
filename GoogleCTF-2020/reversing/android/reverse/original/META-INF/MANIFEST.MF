@@ -1,0 +1,61 @@
+Manifest-Version: 1.0
+Built-By: Generated-by-ADT
+Created-By: Android Gradle 3.1.4
+
+Name: AndroidManifest.xml
+SHA-256-Digest: /x8N+QOL/PbrwnmGVUFg6+d5Kqzm+lE34ZlQ/pRsnRI=
+
+Name: classes.dex
+SHA-256-Digest: SuqRCLuwZxAPT1y9+ZTqW62+oTKubVECJpk5Shzpzvk=
+
+Name: res/drawable-v24/$ic_launcher_foreground__0.xml
+SHA-256-Digest: YNuSvLVkT8WWvwGmDWVWqmkp2PxWvlYWIpyUkb+4dUw=
+
+Name: res/drawable-v24/ic_launcher_foreground.xml
+SHA-256-Digest: 2noFkugVPciUHFwEuhz4vnmGW6ZuREoVFPm/DQrpslQ=
+
+Name: res/drawable/ic_launcher_background.xml
+SHA-256-Digest: tjuVDg269LLA1So+bJqpVpnkawU8DaogC6c2HxcgN/I=
+
+Name: res/layout/activity_main.xml
+SHA-256-Digest: EZb13/9nXQT7WUgO8cAFafd8bt1ubrFMCXohMD/5N7E=
+
+Name: res/mipmap-anydpi-v26/ic_launcher.xml
+SHA-256-Digest: msCHi3gnrSVLdtlIoR4VkC5RaRND0f6XxiI6I6O0r1s=
+
+Name: res/mipmap-anydpi-v26/ic_launcher_round.xml
+SHA-256-Digest: msCHi3gnrSVLdtlIoR4VkC5RaRND0f6XxiI6I6O0r1s=
+
+Name: res/mipmap-hdpi-v4/ic_launcher.png
+SHA-256-Digest: 3teqv2pWtpTkhuCW79ieLwyQZ9KStjRmOJjjUslJHxA=
+
+Name: res/mipmap-hdpi-v4/ic_launcher_round.png
+SHA-256-Digest: ITBKDJsA2mpyz6MccinJUo/Be25etOaKlpvOCMAaL+4=
+
+Name: res/mipmap-mdpi-v4/ic_launcher.png
+SHA-256-Digest: 7vIPJfsUd9jJ3xV1fnZIEcxQP7B3fxjQ9/stGReLW/Y=
+
+Name: res/mipmap-mdpi-v4/ic_launcher_round.png
+SHA-256-Digest: Ug0F+XihW6DM8jAGoaVpGgVKAkeMcMr8Xrr6525gDw0=
+
+Name: res/mipmap-xhdpi-v4/ic_launcher.png
+SHA-256-Digest: 53xQRb/bb0u+lVs6eTv+07qjac5IEa4qkQPVSAY3z/8=
+
+Name: res/mipmap-xhdpi-v4/ic_launcher_round.png
+SHA-256-Digest: KEbhpwPlGXkf4i9BvLJDuC+QjRLl68tD8CDd+ZgngLA=
+
+Name: res/mipmap-xxhdpi-v4/ic_launcher.png
+SHA-256-Digest: 6zo0sTYy4Ms7HA9CcwNYZsvoGxsXtxeM4p0Zx405Sl4=
+
+Name: res/mipmap-xxhdpi-v4/ic_launcher_round.png
+SHA-256-Digest: NjpWm+ty6LAHvwRkVGEhSNTJ94K5ORNSBZ/oMXnxjjA=
+
+Name: res/mipmap-xxxhdpi-v4/ic_launcher.png
+SHA-256-Digest: n/JzKLaRa391uZ7zYVPxVLtHJJRuVlRjXLouJXNSxp8=
+
+Name: res/mipmap-xxxhdpi-v4/ic_launcher_round.png
+SHA-256-Digest: W6zZehtB5EE8YJLNvYP2URKpEk6CPPqjohnGXidhZHs=
+
+Name: resources.arsc
+SHA-256-Digest: iUkAsFbwwqD7qXOQtlJZfZcCVjPCeCF/BN87O3Ku+Zg=
+
